@@ -1,6 +1,7 @@
 import { FC } from "react";
 
 interface InputProps {
+  id: string,
   className: string,
   type: string,
   name: string,
@@ -8,9 +9,10 @@ interface InputProps {
   autoComplete: string
 }
 
-export const Input: FC <InputProps> =({ className, type, name, placeholder, autoComplete }) => {
+export const Input: FC <InputProps> = ({ id, className, type, name, placeholder, autoComplete }) => {
   return (
     <input
+      id={id}
       className={className}
       type={type}
       name={name}
