@@ -1,1 +1,0 @@
-export { LogoList } from "./LogoList"

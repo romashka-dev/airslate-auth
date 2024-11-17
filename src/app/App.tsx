@@ -1,6 +1,6 @@
-import "./App.scss"
-import { AuthorInfo } from "../ui/components/molecules/author-info/AuthorInfo"
-import { LogoList } from  "../ui/components/molecules/logo-list/LogoList"
+import "./App.scss";
+import { AuthorInfo } from "../ui/components/molecules/AuthorInfo/AuthorInfo";
+import { LogoList } from  "../ui/components/molecules/LogoList/LogoList";
 
 function App() {
   const logos = [

@@ -1,5 +1,5 @@
-import { FC } from "react"
-import { LogoProps, LogoLink } from "../../atoms/logo-link/LogoLink"
+import { FC } from "react";
+import { LogoProps, LogoLink } from "../../atoms/LogoLink/LogoLink";
 
 export const LogoList: FC<{ logos: LogoProps[] }> = ({ logos }) => {
   return(
