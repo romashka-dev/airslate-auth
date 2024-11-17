@@ -1,0 +1,78 @@
+@use "../styles/main" as main;
+@use "../styles/elements/button";
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 100px;
+}
+
+.buttons__item:hover {
+  border: 1px solid transparent;
+}
+
+@media screen and (min-width: 768px) {
+  .buttons {
+    flex-direction: row;
+
+    &__item {
+      flex: 1;
+    }
+  }
+}
+
+/* Layout footer */
+.author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1;
+  color: main.$clr-gray-2;
+}
+
+.logo {
+  &__image {
+    height: 96px;
+    padding: 14px;
+    will-change: filter;
+    transition: filter 300ms;
+  }
+
+  .logo__image--react:hover {
+    filter: drop-shadow(0 0 16px main.$clr-hover-react);
+  }
+
+  .logo__image--vite:hover {
+    filter: drop-shadow(0 0 16px main.$clr-hover-vite);
+  }
+
+  .logo__image--typescript:hover {
+    filter: drop-shadow(0 0 16px main.$clr-hover-typescript);
+  }
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo__image--react {
+    animation: logo-spin infinite 20s linear;
+  }
+}
