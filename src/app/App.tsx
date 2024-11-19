@@ -3,8 +3,25 @@ import { Button } from "../ui/components/atoms/Button";
 import { InputGroup } from "../ui/components/molecules/InputGroup";
 import { AuthorInfo } from "../ui/components/molecules/AuthorInfo/AuthorInfo";
 import { LogoList } from  "../ui/components/molecules/LogoList/LogoList";
+import { useForm } from "react-hook-form";
 
 function App() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    defaultValues: {
+      EmailAddress: "",
+      Password: ""
+    },
+    mode: "onChange"
+  });
+
+  const onSubmit = (data: { EmailAddress: string; Password: string }) => {
+    console.log("Form Data:", data);
+  };
+
   const logos = [
     {
       id: "1",
@@ -47,7 +64,7 @@ function App() {
           </div>
         </div>
         <main className="layout__body">
-          <form action="/" className="login-form" method="post" name="form" autoComplete="off">
+          <form onSubmit={handleSubmit(onSubmit)} action="/" className="login-form" method="post" name="form" autoComplete="off">
             <div className="login-form__inner">
               <h1 className="login-form__title">Log in to airSlate</h1>
               <div className="login-form__controls">
@@ -64,11 +81,12 @@ function App() {
                           id: "Email",
                           className: "form-group__input",
                           type: "email",
-                          name: "Email address",
                           placeholder: "Enter an email",
-                          autoComplete: "email"
+                          autoComplete: "email",
+                          register: register("EmailAddress", {required: "Email address is required."})
                         }}
                       />
+                      {errors.EmailAddress && <p className="input-error">{errors.EmailAddress?.message}</p>}
                     </div>
                   </div>
                   <div className="form-group__row">
@@ -83,11 +101,18 @@ function App() {
                           id: "Password",
                           className: "form-group__input",
                           type: "password",
-                          name: "Password",
                           placeholder: "Enter password",
-                          autoComplete: "password"
+                          autoComplete: "password",
+                          register: register("Password", {
+                            required: "Password is required.",
+                            minLength: {
+                              value: 8,
+                              message: "Min length is 8"
+                            }
+                          }),
                         }}
                       />
+                      {errors.Password && <p className="input-error">{errors.Password?.message}</p>}
                     </div>
                   </div>
                   <div className="form-group__row">
