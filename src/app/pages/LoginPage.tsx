@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { Button } from "../../ui/components/atoms/Button";
+import { Button } from "../../ui/components/atoms/Bbutton";
 import { InputGroup } from "../../ui/components/molecules/InputGroup";
 
 export const LoginPage = () => {
