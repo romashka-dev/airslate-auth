@@ -104,6 +104,27 @@ body {
     }
   }
 
+  .create-account {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+  }
+
+  .create-account__link {
+    padding: 4px;
+    font-weight: 600;
+    line-height: 14px;
+    color: #414141;
+    border-radius: 4px;
+    transition: all .3s;
+
+    &:hover {
+      opacity: 1;
+      color: #fff;
+      background-color: #6683a3;
+    }
+  }
+
   .form-group__button {
     width: 100%;
     min-height: 40px;
