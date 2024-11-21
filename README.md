@@ -1,6 +1,6 @@
 # airSlate auth
-airSlate Auth is a simple authentication application created as a pet project to showcase my skills in frontend development. The project demonstrates user authentication features with modern tools and technologies.
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ae702690-e972-4d10-b116-6db4dc825c3d/deploy-status)](https://app.netlify.com/sites/airslate-auth/deploys)
+airSlate Auth is a simple authentication application created as a pet project to showcase my skills in frontend development. The project demonstrates user authentication features with modern tools and technologies.
 
 ## Features
 
