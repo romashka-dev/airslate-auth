@@ -27,6 +27,18 @@ airSlate Auth is a simple authentication application created as a pet project to
 - **Vite**: For fast development and bundling.
 - **Netlify**: For deploying the application and hosting.
 
+## Project Structure
+
+The project follows the **Atomic Design** methodology, organizing components into a scalable structure for maintainable development:
+
+- **Atoms**: Basic building blocks like buttons, inputs, and labels.  
+- **Molecules**: Small components made of multiple atoms, like form fields or card components.  
+- **Organisms**: More complex components made of molecules and/or atoms, such as navigation bars or forms.  
+- **Templates**: Page layouts combining multiple organisms.  
+- **Pages**: Final, route-specific components combining templates and data.
+
+This approach ensures reusability, consistency, and a clear hierarchy in the application.
+
 ## Getting Started
 
 Follow these steps to set up the project on your local machine:
