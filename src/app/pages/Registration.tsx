@@ -1,7 +1,7 @@
 import "../../styles/pages/_register.scss";
 import { Link } from "react-router-dom";
 
-export const RegisterPage = () => {
+export const Registration = () => {
   return (
     <>
       <div className="layout">
