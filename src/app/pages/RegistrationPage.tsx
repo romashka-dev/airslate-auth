@@ -2,6 +2,7 @@ import "../../styles/pages/_register.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import {getAuth, createUserWithEmailAndPassword} from "firebase/auth";
+import { app } from "../../../firebase";
 import { Form } from "../../ui/components/organisms/Form";
 import { setUser } from "../store/slices/userSlice";
 import { useAppDispatch } from "../hooks/redux-hooks";
@@ -11,7 +12,7 @@ export const RegistrationPage = () => {
   const navigate = useNavigate();
 
   const handleRegister = ({ EmailAddress, Password }: { EmailAddress: string; Password: string }) => {
-    const auth = getAuth();
+    const auth = getAuth(app);
     createUserWithEmailAndPassword(auth, EmailAddress, Password)
       .then(({user}) => {
         console.log(user);
