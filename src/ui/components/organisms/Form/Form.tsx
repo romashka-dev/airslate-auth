@@ -1,25 +1,23 @@
 import { InputGroup } from "../../molecules/InputGroup";
 import { Button } from "../../atoms/Button";
-import { Link } from "react-router-dom";
 
-interface LoginFormProps {
+interface FormProps {
   onSubmit: () => void;
+  formTitle: string;
   register: any;
   errors: Record<string, any>;
+  buttonText: string;
 }
 
-export const LoginForm = ({onSubmit, register, errors}: LoginFormProps) => {
+export const Form = ({onSubmit, formTitle, register, errors, buttonText}: FormProps) => {
   return (
     <form
       onSubmit={onSubmit}
-      action="/"
       className="login-form"
-      method="post"
-      name="form"
       autoComplete="off"
     >
       <div className="login-form__inner">
-        <h1 className="login-form__title">Log in to airSlate</h1>
+        <h1 className="login-form__title">{formTitle}</h1>
         <div className="login-form__controls">
           <div className="form-group">
             <div className="form-group__row">
@@ -78,14 +76,9 @@ export const LoginForm = ({onSubmit, register, errors}: LoginFormProps) => {
               </p>
             </div>
             <div className="form-group__row">
-              <p className="create-account">Don’t have an account?&ensp;
-                <Link className="create-account__link" to="/register">Create one</Link>
-              </p>
-            </div>
-            <div className="form-group__row">
               <div className="form-group__action">
                 <Button
-                  title="Log in"
+                  title={buttonText}
                   selector="form-group__button"
                   type="submit"
                   ariaLabel="Log in"

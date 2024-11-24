@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface InitialSlateProps {
   email: string | null;
   token: string | null;
-  id: number | null;
+  id: string | null;
 }
 
 const initialSlate: InitialSlateProps = {
@@ -16,7 +16,7 @@ const userSlice = createSlice({
   name: "user",
   initialState: initialSlate,
   reducers: {
-    setUser(state, action: PayloadAction<{ email: string; token: string; id: number }>) {
+    setUser(state, action: PayloadAction<{ email: string | null; token: string | null; id: string | null }>) {
       state.email = action.payload.email;
       state.token = action.payload.token;
       state.id = action.payload.id;

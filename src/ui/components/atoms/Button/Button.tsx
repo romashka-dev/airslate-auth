@@ -8,7 +8,7 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-export const Button: FC<ButtonProps> = ({ onClick, title, selector, type = 'button', ariaLabel }) => {
+export const Button: FC<ButtonProps> = ({ title, selector, type = 'button', ariaLabel, onClick }) => {
   return (
     <button
       onClick={onClick}

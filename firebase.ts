@@ -9,4 +9,7 @@ const firebaseConfig = {
   appId: import.meta.env.REACT_APP_FIREBASE_APP_ID
 };
 
+console.log("API Key:", import.meta.env.REACT_APP_FIREBASE_API_KEY);
+console.log("Auth Domain:", import.meta.env.REACT_APP_FIREBASE_AUTH_DOMAIN);
+
 const app = initializeApp(firebaseConfig);

@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { UseFormRegister } from "react-hook-form";
 
 interface InputProps {
@@ -11,7 +10,14 @@ interface InputProps {
   register: ReturnType<UseFormRegister<{ "EmailAddress": string, "Password": string }>>;
 }
 
-export const Input: FC <InputProps> = ({ id, className, type, placeholder, autoComplete, register }) => {
+export const Input = ({
+  id,
+  className,
+  type,
+  placeholder,
+  autoComplete,
+  register,
+}: InputProps) => {
   return (
     <input
       id={id}

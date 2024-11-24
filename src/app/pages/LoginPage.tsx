@@ -1,9 +1,31 @@
-import { LoginForm } from "../../ui/components/organisms/LoginForm";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import {getAuth, createUserWithEmailAndPassword} from "firebase/auth";
+import { Form } from "../../ui/components/organisms/Form";
+import { setUser } from "../store/slices/userSlice";
+import { useAppDispatch } from "../hooks/redux-hooks";
 import { AuthorInfo } from "../../ui/components/molecules/AuthorInfo";
 import { LogoList } from  "../../ui/components/molecules/LogoList";
-import { useForm } from "react-hook-form";
 
-export const Form = () => {
+export const LoginPage = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleLogin = ({ EmailAddress, Password }: { EmailAddress: string; Password: string }) => {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, EmailAddress, Password)
+      .then(({user}) => {
+        console.log(user);
+        dispatch(setUser({
+          email: user.email,
+          id: user.uid,
+          token: user.refreshToken,
+        }));
+        navigate("/");
+      })
+      .catch(() => alert("Invalid User!"))
+  }
+
   const {
     register,
     handleSubmit,
@@ -16,9 +38,9 @@ export const Form = () => {
     mode: "onChange"
   });
 
-  const onSubmit = (data: { EmailAddress: string; Password: string }) => {
-    console.log("Form Data:", data);
-  };
+  // const onSubmit = (data: { EmailAddress: string; Password: string }) => {
+  //   console.log("Form Data:", data);
+  // };
 
   const logos = [
     {
@@ -62,11 +84,16 @@ export const Form = () => {
           </div>
         </div>
         <main className="layout__body">
-          <LoginForm
-            onSubmit={handleSubmit(onSubmit)}
+          <Form
+            onSubmit={handleSubmit(handleLogin)}
+            formTitle="Log in to airSlate"
             register={register}
             errors={errors}
+            buttonText="Log in"
           />
+          <p className="create-account">Don’t have an account?&ensp;
+            <Link className="create-account__link" to="/register">Create one</Link>
+          </p>
         </main>
         <div className="layout__footer">
           <AuthorInfo
