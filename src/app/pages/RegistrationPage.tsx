@@ -1,7 +1,7 @@
 import "../../styles/pages/_register.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import {getAuth, createUserWithEmailAndPassword} from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../../firebase";
 import { Form } from "../../ui/components/organisms/Form";
 import { setUser } from "../store/slices/userSlice";

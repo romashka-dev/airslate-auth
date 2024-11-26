@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import {getAuth, createUserWithEmailAndPassword} from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../../firebase";
 import { Form } from "../../ui/components/organisms/Form";
 import { setUser } from "../store/slices/userSlice";
@@ -14,7 +14,7 @@ export const LoginPage = () => {
 
   const handleLogin = ({ EmailAddress, Password }: { EmailAddress: string; Password: string }) => {
     const auth = getAuth(app);
-    createUserWithEmailAndPassword(auth, EmailAddress, Password)
+    signInWithEmailAndPassword(auth, EmailAddress, Password)
       .then(({user}) => {
         console.log(user);
         dispatch(setUser({
