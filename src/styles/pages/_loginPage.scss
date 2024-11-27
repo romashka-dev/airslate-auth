@@ -1,0 +1,75 @@
+@use "../../styles/abstracts/variables" as vars;
+
+.section--create-account {
+  .create-account {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    margin-bottom: 60px;
+  
+    &__text {
+      color: #fff;
+    }
+  
+    &__link {
+      padding: 8px;
+      font-weight: 600;
+      line-height: 14px;
+      color: #fff;
+      border-radius: 4px;
+      transition: all .3s;
+    
+      &:hover {
+        opacity: 1;
+        color: #fff;
+        background-color: #000;
+      }
+    }
+  }
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1;
+  color: #fff;
+}
+
+.logo-list {
+  &__image {
+    height: 96px;
+    padding: 14px;
+    will-change: filter;
+    transition: filter 300ms;
+  }
+
+  .logo-list__image--react:hover {
+    filter: drop-shadow(0 0 16px vars.$clr-hover-react);
+  }
+
+  .logo-list__image--vite:hover {
+    filter: drop-shadow(0 0 16px vars.$clr-hover-vite);
+  }
+
+  .logo-list__image--typescript:hover {
+    filter: drop-shadow(0 0 16px vars.$clr-hover-typescript);
+  }
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo-list__image--react {
+    animation: logo-spin infinite 20s linear;
+  }
+}

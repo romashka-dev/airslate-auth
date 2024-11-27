@@ -13,12 +13,12 @@ export const Form = ({onSubmit, formTitle, register, errors, buttonText}: FormPr
   return (
     <form
       onSubmit={onSubmit}
-      className="login-form"
+      className="form"
       autoComplete="off"
     >
-      <div className="login-form__inner">
-        <h1 className="login-form__title">{formTitle}</h1>
-        <div className="login-form__controls">
+      <div className="form__inner">
+        <h1 className="form__title">{formTitle}</h1>
+        <div className="form__controls">
           <div className="form-group">
             <div className="form-group__row">
               <div className="form-group__items">

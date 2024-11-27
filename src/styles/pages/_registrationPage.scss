@@ -1,0 +1,27 @@
+.section--account-registered {
+  .account {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    margin-bottom: 60px;
+    
+    &__text {
+      color: #fff;
+    }
+
+    &__link {
+      padding: 8px;
+      font-weight: 600;
+      line-height: 14px;
+      color: #fff;
+      border-radius: 4px;
+      transition: all .3s;
+    
+      &:hover {
+        opacity: 1;
+        color: #fff;
+        background-color: #000;
+      }
+    }
+  }
+}

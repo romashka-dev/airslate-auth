@@ -1,4 +1,4 @@
-import "../../styles/pages/_register.scss";
+import "../../styles/pages/_registrationPage.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -46,16 +46,22 @@ export const RegistrationPage = () => {
           </div>
         </div>
         <main className="layout__body">
-          <Form
-            onSubmit={handleSubmit(handleRegister)}
-            formTitle="Welcome to airSlate"
-            register={register}
-            errors={errors}
-            buttonText="Get started"
-          />
-          <p className="account">Already have an account?&ensp;
-            <Link className="account__link" to="../login">Sign in</Link>
-          </p>
+          <section className="section section--registration-form">
+            <Form
+              onSubmit={handleSubmit(handleRegister)}
+              formTitle="Welcome to airSlate"
+              register={register}
+              errors={errors}
+              buttonText="Get started"
+            />
+          </section>
+          <section className="section section--account-registered">
+            <div className="account">
+              <p className="account__text">Already have an account?&ensp;
+                <Link className="account__link" to="../login">Sign in</Link>
+              </p>
+            </div>
+          </section>
         </main>
       </div>
     </>

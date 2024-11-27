@@ -1,5 +1,7 @@
-@use "../styles/main" as main;
-@use "../styles/elements/button";
+@use "../styles/main";
+@use "../styles/pages/homePage";
+@use "../styles/pages/loginPage";
+@use "../styles/pages/registrationPage";
 
 #root {
   max-width: 100%;
@@ -32,114 +34,6 @@ body {
   }
 }
 
-.login-form {
-  max-width: 100%;
-  padding-bottom: 60px;
-
-  &__inner {
-    width: 100%;
-    padding: 30px;
-    text-align: left;
-    background-color: #fff;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, .1);
-    border-radius: 8px;
-  }
-
-  &__title {
-    margin-top: 0;
-    font-size: 24px;
-    line-height: 32px;
-    color: #414141;
-  }
-
-  .form-group {
-    &__row:not(:last-child) {
-      margin-bottom: 16px;
-    }
-  }
-
-  .form-group__label {
-    display: block;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 24px;
-    color: #414141;
-    margin-bottom: 4px;
-  }
-  
-  .form-group__input {
-    width: 100%;
-    height: 40px;
-    padding: 8px 12px;
-    font-size: 14px;
-    border: 1px solid #aaa;
-    border-radius: 4px;
-  }
-
-  .input-error {
-    font-size: 12px;
-    color: red;
-    text-align: left;
-    margin: 4px 14px 0px;
-
-  }
-
-  .policy {
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 16px;
-    color: #565656;
-  }
-
-  .policy > a {
-    font-weight: 600;
-    line-height: 14px;
-    color: #45688f;
-    text-decoration: underline;
-    transition: all .3s;
-
-    &:hover {
-      color: #6683a3;
-      opacity: 1;
-    }
-  }
-
-  .create-account {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 16px;
-  }
-
-  .create-account__link {
-    padding: 4px;
-    font-weight: 600;
-    line-height: 14px;
-    color: #414141;
-    border-radius: 4px;
-    transition: all .3s;
-
-    &:hover {
-      opacity: 1;
-      color: #fff;
-      background-color: #6683a3;
-    }
-  }
-
-  .form-group__button {
-    width: 100%;
-    min-height: 40px;
-    border: 0;
-    cursor: pointer;
-    background-color: #ff9000;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 16px;
-    border-radius: 4px;
-    transition: all .3s;
-  }
-}
-
 .buttons {
   display: flex;
   flex-direction: column;
@@ -152,58 +46,12 @@ body {
   }
 }
 
-.author-info {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 0;
-  font-size: 16px;
-  line-height: 1;
-  color: #fff;
-}
-
-.logo {
-  &__image {
-    height: 96px;
-    padding: 14px;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-
-  .logo__image--react:hover {
-    filter: drop-shadow(0 0 16px main.$clr-hover-react);
-  }
-
-  .logo__image--vite:hover {
-    filter: drop-shadow(0 0 16px main.$clr-hover-vite);
-  }
-
-  .logo__image--typescript:hover {
-    filter: drop-shadow(0 0 16px main.$clr-hover-typescript);
-  }
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo__image--react {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 @media screen and (min-width: 768px) {
   .layout {
     margin: 0 16px;
   }
 
-  .login-form {
+  .form {
     max-width: 552px;
 
     &__inner {

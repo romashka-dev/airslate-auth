@@ -39,16 +39,12 @@ export const LoginPage = () => {
     mode: "onChange"
   });
 
-  // const onSubmit = (data: { EmailAddress: string; Password: string }) => {
-  //   console.log("Form Data:", data);
-  // };
-
   const logos = [
     {
       id: "1",
-      selectorLink: "logo__link",
+      selectorLink: "logo-list__link",
       href: "https://vite.dev",
-      selectorImage: "logo__image logo__image--vite",
+      selectorImage: "logo-list__image logo-list__image--vite",
       path: "./images/svg/vite.svg",
       width: 64,
       height: 64,
@@ -56,9 +52,9 @@ export const LoginPage = () => {
     },
     {
       id: "2",
-      selectorLink: "logo__link",
+      selectorLink: "logo-list__link",
       href: "https://react.dev",
-      selectorImage: "logo__image logo__image--react",
+      selectorImage: "logo-list__image logo-list__image--react",
       path: "./images/svg/react.svg",
       width: 64,
       height: 64,
@@ -66,9 +62,9 @@ export const LoginPage = () => {
     },
     {
       id: "3",
-      selectorLink: "logo__link",
+      selectorLink: "logo-list__link",
       href: "https://www.typescriptlang.org/",
-      selectorImage: "logo__image logo__image--typescript",
+      selectorImage: "logo-list__image logo-list__image--typescript",
       path: "./images/svg/typescript.svg",
       width: 64,
       height: 64,
@@ -85,16 +81,22 @@ export const LoginPage = () => {
           </div>
         </div>
         <main className="layout__body">
-          <Form
-            onSubmit={handleSubmit(handleLogin)}
-            formTitle="Log in to airSlate"
-            register={register}
-            errors={errors}
-            buttonText="Log in"
-          />
-          <p className="create-account">Don’t have an account?&ensp;
-            <Link className="create-account__link" to="/register">Create one</Link>
-          </p>
+          <section className="section section--login-form">
+            <Form
+              onSubmit={handleSubmit(handleLogin)}
+              formTitle="Log in to airSlate"
+              register={register}
+              errors={errors}
+              buttonText="Log in"
+            />
+          </section>
+          <section className="section section--create-account">
+            <div className="create-account">
+              <p className="create-account__text">Don’t have an account?&ensp;
+                <Link className="create-account__link" to="/register">Create one</Link>
+              </p>
+            </div>
+          </section>
         </main>
         <div className="layout__footer">
           <AuthorInfo
