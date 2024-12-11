@@ -1,0 +1,32 @@
+export const LOGOS = [
+  {
+    id: '1',
+    selectorLink: 'logo-list__link',
+    href: 'https://vite.dev',
+    selectorImage: 'logo-list__image logo-list__image--vite',
+    path: './images/svg/vite.svg',
+    width: 64,
+    height: 64,
+    altText: 'Vite logo',
+  },
+  {
+    id: '2',
+    selectorLink: 'logo-list__link',
+    href: 'https://react.dev',
+    selectorImage: 'logo-list__image logo-list__image--react',
+    path: './images/svg/react.svg',
+    width: 64,
+    height: 64,
+    altText: 'React logo',
+  },
+  {
+    id: '3',
+    selectorLink: 'logo-list__link',
+    href: 'https://www.typescriptlang.org/',
+    selectorImage: 'logo-list__image logo-list__image--typescript',
+    path: './images/svg/typescript.svg',
+    width: 64,
+    height: 64,
+    altText: 'TypeScript logo',
+  },
+]

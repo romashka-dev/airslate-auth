@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom'
 import { useAuth } from '../hooks/use-auth'
-import { removeUser } from '../store/slices/userSlice'
+import { removeUser } from '../store/slices/user-slice'
 import { useAppDispatch } from '../hooks/redux-hooks'
 import { Button } from '../../ui/components/atoms/Button'
 import { TemplateScaffold } from '../../ui/components/templates/Scaffold'

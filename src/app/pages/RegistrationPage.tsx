@@ -1,38 +1,36 @@
 import '../../styles/pages/_registrationPage.scss'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-import { app } from '../../../firebase'
-import { Form } from '../../ui/components/organisms/Form'
-import { setUser } from '../store/slices/userSlice'
-import { useAppDispatch } from '../hooks/redux-hooks'
 import { TemplateScaffold } from '../../ui/components/templates/Scaffold'
+import { Form } from '../../ui/components/organisms/Form'
+import { setUser } from '../store/slices/user-slice'
+import { useAppDispatch } from '../hooks/redux-hooks'
+import { registerUser } from '../auth/auth-service'
 
 export const RegistrationPage = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  const handleRegister = ({
+  const handleRegister = async ({
     EmailAddress,
     Password,
   }: {
     EmailAddress: string
     Password: string
   }) => {
-    const auth = getAuth(app)
-    createUserWithEmailAndPassword(auth, EmailAddress, Password)
-      .then(({ user }) => {
-        console.log(user)
-        dispatch(
-          setUser({
-            email: user.email,
-            id: user.uid,
-            token: user.refreshToken,
-          })
-        )
-        navigate('/')
-      })
-      .catch(console.error)
+    try {
+      const userData = await registerUser(EmailAddress, Password)
+      dispatch(
+        setUser({
+          email: userData.email,
+          id: userData.uid,
+          token: userData.token,
+        })
+      )
+      navigate('/')
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const {

@@ -1,10 +1,10 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import { store } from "./store";
-import { App } from "./App.tsx";
-import "../../firebase.ts";
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { store } from './store'
+import { App } from './App.tsx'
+import '../configs/firebase.ts'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -13,5 +13,5 @@ createRoot(document.getElementById('root')!).render(
         <App />
       </Provider>
     </BrowserRouter>
-  </StrictMode>,
+  </StrictMode>
 )

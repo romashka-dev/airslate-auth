@@ -1,39 +1,38 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import { app } from '../../../firebase'
-import { Form } from '../../ui/components/organisms/Form'
-import { setUser } from '../store/slices/userSlice'
-import { useAppDispatch } from '../hooks/redux-hooks'
-import { AuthorInfo } from '../../ui/components/molecules/AuthorInfo'
-import { LogoList } from '../../ui/components/molecules/LogoList'
 import { TemplateScaffold } from '../../ui/components/templates/Scaffold'
+import { Form } from '../../ui/components/organisms/Form'
+import { AuthorInfo } from '../../ui/components/molecules/AuthorInfo'
+import { LOGOS } from '../data/logo-data'
+import { LogoList } from '../../ui/components/molecules/LogoList'
+import { setUser } from '../store/slices/user-slice'
+import { useAppDispatch } from '../hooks/redux-hooks'
+import { loginUser } from '../auth/auth-service'
 
 export const LoginPage = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  const handleLogin = ({
+  const handleLogin = async ({
     EmailAddress,
     Password,
   }: {
     EmailAddress: string
     Password: string
   }) => {
-    const auth = getAuth(app)
-    signInWithEmailAndPassword(auth, EmailAddress, Password)
-      .then(({ user }) => {
-        console.log(user)
-        dispatch(
-          setUser({
-            email: user.email,
-            id: user.uid,
-            token: user.refreshToken,
-          })
-        )
-        navigate('/')
-      })
-      .catch(() => alert('Invalid User!'))
+    try {
+      const userData = await loginUser(EmailAddress, Password)
+      dispatch(
+        setUser({
+          email: userData.email,
+          id: userData.uid,
+          token: userData.token,
+        })
+      )
+      navigate('/')
+    } catch {
+      alert('Invalid User!')
+    }
   }
 
   const {
@@ -47,39 +46,6 @@ export const LoginPage = () => {
     },
     mode: 'onChange',
   })
-
-  const logos = [
-    {
-      id: '1',
-      selectorLink: 'logo-list__link',
-      href: 'https://vite.dev',
-      selectorImage: 'logo-list__image logo-list__image--vite',
-      path: './images/svg/vite.svg',
-      width: 64,
-      height: 64,
-      altText: 'Vite logo',
-    },
-    {
-      id: '2',
-      selectorLink: 'logo-list__link',
-      href: 'https://react.dev',
-      selectorImage: 'logo-list__image logo-list__image--react',
-      path: './images/svg/react.svg',
-      width: 64,
-      height: 64,
-      altText: 'React logo',
-    },
-    {
-      id: '3',
-      selectorLink: 'logo-list__link',
-      href: 'https://www.typescriptlang.org/',
-      selectorImage: 'logo-list__image logo-list__image--typescript',
-      path: './images/svg/typescript.svg',
-      width: 64,
-      height: 64,
-      altText: 'TypeScript logo',
-    },
-  ]
 
   return (
     <TemplateScaffold>
@@ -120,7 +86,7 @@ export const LoginPage = () => {
             projectDescription="Project: airSlate Auth"
             authorName="Author: Holovizin Roman"
           />
-          <LogoList logos={logos} />
+          <LogoList logos={LOGOS} />
         </div>
       </div>
     </TemplateScaffold>
